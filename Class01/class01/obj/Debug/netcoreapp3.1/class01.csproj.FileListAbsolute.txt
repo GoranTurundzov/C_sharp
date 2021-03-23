@@ -1,0 +1,13 @@
+C:\Seavus\C#Basic\class01\Solutionclass01\class01\obj\Debug\netcoreapp3.1\class01.csprojAssemblyReference.cache
+C:\Seavus\C#Basic\class01\Solutionclass01\class01\obj\Debug\netcoreapp3.1\class01.AssemblyInfoInputs.cache
+C:\Seavus\C#Basic\class01\Solutionclass01\class01\obj\Debug\netcoreapp3.1\class01.AssemblyInfo.cs
+C:\Seavus\C#Basic\class01\Solutionclass01\class01\obj\Debug\netcoreapp3.1\class01.csproj.CoreCompileInputs.cache
+C:\Seavus\C#Basic\class01\Solutionclass01\class01\bin\Debug\netcoreapp3.1\class01.exe
+C:\Seavus\C#Basic\class01\Solutionclass01\class01\bin\Debug\netcoreapp3.1\class01.deps.json
+C:\Seavus\C#Basic\class01\Solutionclass01\class01\bin\Debug\netcoreapp3.1\class01.runtimeconfig.json
+C:\Seavus\C#Basic\class01\Solutionclass01\class01\bin\Debug\netcoreapp3.1\class01.runtimeconfig.dev.json
+C:\Seavus\C#Basic\class01\Solutionclass01\class01\bin\Debug\netcoreapp3.1\class01.dll
+C:\Seavus\C#Basic\class01\Solutionclass01\class01\bin\Debug\netcoreapp3.1\class01.pdb
+C:\Seavus\C#Basic\class01\Solutionclass01\class01\obj\Debug\netcoreapp3.1\class01.dll
+C:\Seavus\C#Basic\class01\Solutionclass01\class01\obj\Debug\netcoreapp3.1\class01.pdb
+C:\Seavus\C#Basic\class01\Solutionclass01\class01\obj\Debug\netcoreapp3.1\class01.genruntimeconfig.cache

@@ -7,9 +7,9 @@ namespace PizzaPlace
     {
         static void Main(string[] args)
         {
-          
 
-                Console.WriteLine("WELCOME TO OUR RESTORAUNT!");
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+            Console.WriteLine("WELCOME TO OUR RESTORAUNT!");
                 bool selected = false;
                 int day = 0;
                 int orders = 0;
@@ -66,19 +66,19 @@ namespace PizzaPlace
                         case 3:
                             regularPrice = 300;
                             elitePrice = 400;
-                            Console.WriteLine($"Prices: \n  Regular Pizza:{regularPrice.ToString(new CultureInfo("mk-US"))} \n  Elite Pizza: { elitePrice.ToString(new CultureInfo("mk-MK"))}");
+                            Console.WriteLine($"Prices: \n  Regular Pizza:{regularPrice.ToString("C" , new CultureInfo("mk-MK"))} \n  Elite Pizza: { elitePrice.ToString("C" , new CultureInfo("mk-MK"))}");
                             break;
                         case 4:
                         case 5:
                             regularPrice = 350;
                             elitePrice = 500;
-                            Console.WriteLine($"Prices: \n  Regular Pizza:{regularPrice.ToString(new CultureInfo("mk-MK"))} \n  Elite Pizza: { elitePrice.ToString(new CultureInfo("mk-MK"))}");
+                            Console.WriteLine($"Prices: \n  Regular Pizza:{regularPrice.ToString("C", new CultureInfo("mk-MK"))} \n  Elite Pizza: { elitePrice.ToString("C" , new CultureInfo("mk-MK"))}");
                             break;
                         case 6:
                         case 7:
                             regularPrice = 400;
                             elitePrice = 550;
-                            Console.WriteLine($"Prices: \n  Regular Pizza:{regularPrice.ToString(new CultureInfo("mk-MK"))} \n  Elite Pizza: { elitePrice.ToString(new CultureInfo("mk-MK"))}");
+                            Console.WriteLine($"Prices: \n  Regular Pizza:{regularPrice.ToString("C", new CultureInfo("mk-MK"))} \n  Elite Pizza: { elitePrice.ToString("C" , new CultureInfo("mk-MK"))}");
                             break;
                     }
                     bool pizzaSelector = false;
@@ -105,17 +105,17 @@ namespace PizzaPlace
                     {
                         if ((day == 4 || day == 5) && orders > 3)
                         {
-                            Console.WriteLine($"Reserved: {days[day]} {orders} for the price of {regularPrice} for a total of {(orders * regularPrice).ToString(new CultureInfo("mk-MK"))}");
-                            Console.WriteLine($"Large Order discount of 30%  for a total of {((orders * regularPrice) * 0.7).ToString(new CultureInfo("mk-MK"))}");
+                            Console.WriteLine($"Reserved: {days[day]} {orders} for the price of {regularPrice} for a total of {(orders * regularPrice).ToString("C" ,new CultureInfo("mk-MK"))}");
+                            Console.WriteLine($"Large Order discount of 30%  for a total of {((orders * regularPrice) * 0.7).ToString("C" , new CultureInfo("mk-MK"))}");
                         }
                         else if ((day == 6 || day == 7) && orders > 5)
                         {
-                            Console.WriteLine($"Reserved: {days[day]} {orders} for the price of {regularPrice} for a total of {(orders * regularPrice).ToString(new CultureInfo("mk-MK"))}");
-                            Console.WriteLine($"Large Order discount of 35%  for a total of {((orders * regularPrice) * 0.65).ToString(new CultureInfo("mk-MK"))}");
+                            Console.WriteLine($"Reserved: {days[day]} {orders} for the price of {regularPrice} for a total of {(orders * regularPrice).ToString("C" , new CultureInfo("mk-MK"))}");
+                            Console.WriteLine($"Large Order discount of 35%  for a total of {((orders * regularPrice) * 0.65).ToString("C", new CultureInfo("mk-MK"))}");
                         }
                         else
                         {
-                            Console.WriteLine($"Reserved: {days[day]} {orders} for the price of {regularPrice} for a total of {(orders * regularPrice).ToString(new CultureInfo("mk-MK"))}");
+                            Console.WriteLine($"Reserved: {days[day]} {orders} for the price of {regularPrice} for a total of {(orders * regularPrice).ToString("C" , new CultureInfo("mk-MK"))}");
                         }
                     }
                     else if (selector == 2)
@@ -127,12 +127,12 @@ namespace PizzaPlace
                         }
                         else if (orders > 6)
                         {
-                            Console.WriteLine($"Reserved: {days[day]} {orders} for the price of {elitePrice} for a total of {(orders * elitePrice).ToString(new CultureInfo("mk-MK"))}");
-                            Console.WriteLine($"Large Order discount of 20%  for a total of {((orders * elitePrice) * 0.8).ToString(new CultureInfo("mk-MK"))}");
+                            Console.WriteLine($"Reserved: {days[day]} {orders} for the price of {elitePrice} for a total of {(orders * elitePrice).ToString("C" , new CultureInfo("mk-MK"))}");
+                            Console.WriteLine($"Large Order discount of 20%  for a total of {((orders * elitePrice) * 0.8).ToString("C" , new CultureInfo("mk-MK"))}");
                         }
                         else
                         {
-                            Console.WriteLine($"Reserved: {days[day]} {orders} for the price of {elitePrice} for a total of {(orders * elitePrice).ToString(new CultureInfo("mk-MK"))}");
+                            Console.WriteLine($"Reserved: {days[day]} {orders} for the price of {elitePrice} for a total of {(orders * elitePrice).ToString("C" , new CultureInfo("mk-MK"))}");
                         }
                     }
                     Console.ForegroundColor = ConsoleColor.White;

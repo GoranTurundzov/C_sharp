@@ -27,7 +27,9 @@ namespace AtmMachine
                         int activeUser = LogInAtm(users);
                         if(activeUser == -1)
                         {
+                            Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine("Invalid Card Number or PIN");
+                            Console.ForegroundColor = ConsoleColor.White;
                             continue;
                         }
                         UserInterFace(users[activeUser]);
@@ -35,7 +37,6 @@ namespace AtmMachine
                         continue;
 
                     case "2":
-                        Console.WriteLine(users.Length);
                         users = RegisterUser(users);
                         continue;
                     case "admin":
@@ -77,6 +78,7 @@ namespace AtmMachine
                     userFound = true;
                     break;
                 }
+                
 
             }
             if (userFound)
@@ -91,7 +93,32 @@ namespace AtmMachine
         }
         static User[] RegisterUser(User[] users)
         {
-            long cardNumber = CheckCard();
+            long cardNumber;
+            while (true) 
+            {
+                cardNumber = CheckCard();
+                foreach(User user in users)
+                {
+                    if(cardNumber == user.GetCardNumber())
+                    {
+                        cardNumber = 0;
+                    }
+                    
+                }
+                if(cardNumber == 0)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("Card already registered");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    continue;
+                } else
+                {
+                    break;
+                }
+                
+            }
+            
+            
             int cardPin = CheckPin();
             
             Console.WriteLine("Enter Name Please");

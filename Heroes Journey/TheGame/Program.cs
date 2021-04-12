@@ -425,20 +425,20 @@ namespace TheGame
                 switch (fight)
                 {
                     case true:
-
-                        if (roll > chara.getStrenght())
-                        {
-                            Console.WriteLine($"You rolled {roll} and recieved {enemyDamage} Damage ");
-                            chara.setHealth(-enemyDamage);
-                            showHP(chara, enemyHP);
-                        }
-                        else if (roll == 11)
+                         if (roll == 0)
                         {
                             Console.WriteLine("U landed a critical strike and killed you opponent");
 
                             enemyHP = 0;
                             showHP(chara, enemyHP);
                         }
+                        else if (roll > chara.getStrenght())
+                        {
+                            Console.WriteLine($"You rolled {roll} and recieved {enemyDamage} Damage ");
+                            chara.setHealth(-enemyDamage);
+                            showHP(chara, enemyHP);
+                        }
+                       
                         else
                         {
                             Console.WriteLine($"You rolled {roll} and struck the bandit for {20 * (chara.getStrenght() - roll)}");
@@ -447,19 +447,19 @@ namespace TheGame
                         }
                         break;
                     case false:
-
-                        if (roll > chara.getAgility())
-                        {
-                            Console.WriteLine("You failed to get away and recieved 10 Damage");
-                            chara.setHealth(-10);
-                            showHP(chara, enemyHP);
-                        }
-                        else if (roll == 11)
+                          if (roll == 0)
                         {
                             Console.WriteLine($"You have run away and run in to a healer and gained 100HP");
                             chara.setHealth(100);
                             showHP(chara, enemyHP);
                         }
+                        else if (roll > chara.getAgility())
+                        {
+                            Console.WriteLine("You failed to get away and recieved 10 Damage");
+                            chara.setHealth(-10);
+                            showHP(chara, enemyHP);
+                        }
+                       
                         else
                         {
                             Console.WriteLine($"You have run away and healed for 40hp");

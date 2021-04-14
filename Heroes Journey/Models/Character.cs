@@ -51,20 +51,20 @@ namespace Models
             return $"{CharName} ({Race}) the {Class} \n Health: {Health}  \n Strength: {Strength}  \n  Agility: {Agility}";
         }
 
-        public int getStrenght()
+        public int GetStrenght()
         {
             return Strength;
         }
 
-        public int getAgility()
+        public int GetAgility()
         {
             return Agility;
         }
-        public void setHealth(int num)
+        public void SetHealth(int num)
         {
             Health += num;
         }
-        public double getHealth()
+        public double GetHealth()
         {
             return Health;
         }

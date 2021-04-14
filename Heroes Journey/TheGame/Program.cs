@@ -40,7 +40,7 @@ namespace TheGame
                     case "admin":
                         foreach(User user in users)
                         {
-                            Console.WriteLine(user.getInfo());
+                            Console.WriteLine(user.GetInfo());
                         }
                         break;
                     default:
@@ -111,7 +111,7 @@ namespace TheGame
                 {
                     foreach (User account in users)
                     {
-                        if (enteredEmail.ToLower() == account.getEmail())
+                        if (enteredEmail.ToLower() == account.GetEmail())
                         {
                             Console.WriteLine("Email already exists");
                             found = true;
@@ -161,7 +161,7 @@ namespace TheGame
 
             for(int i = 0; i < users.Length; i++)
             {
-                if(users[i].GetUsername() == username.ToLower() && users[i].getPassword() == password)
+                if(users[i].GetUsername() == username.ToLower() && users[i].GetPassword() == password)
                 {
                     return i;
                 }
@@ -191,13 +191,13 @@ namespace TheGame
                 switch (Console.ReadLine())
                 {
                     case "1":
-                        user.listCharacters();
-                        Character picked = pickCharacter(user);
-                        if (picked.getHealth() > 0)
+                        user.ListCharacters();
+                        Character picked = PickCharacter(user);
+                        if (picked.GetHealth() > 0)
                         {
                             Console.WriteLine("Event 1");
                             Console.WriteLine("Bandits attack you from nowhere. They seem vey dangerous");
-                            picked = gamePlayEvent2(picked , 20);
+                            picked = GamePlayEvent2(picked , 20);
                         } else
                         {
 
@@ -205,51 +205,51 @@ namespace TheGame
                             break;
                         }
                             
-                        if(picked.getHealth() > 0)
+                        if(picked.GetHealth() > 0)
                         {
                             Console.WriteLine("Event 2");
                             Console.WriteLine("You go back to the village");
                             Console.WriteLine("You bump the Guard he attacks");
-                            picked = gamePlayEvent2(picked , 30);
+                            picked = GamePlayEvent2(picked , 30);
                         } else
                         {
                             Console.WriteLine($"Game Over ");
                             break;
                         }
-                        if (picked.getHealth() > 0)
+                        if (picked.GetHealth() > 0)
                         {
                             Console.WriteLine("Event 3");
                             Console.WriteLine("As you were walking around a land SHARK starts to chase you");
-                            picked = gamePlayEvent2(picked , 50);
+                            picked = GamePlayEvent2(picked , 50);
                         }
                         else
                         {
                             Console.WriteLine($"Game Over ");
                             break;
                         }
-                        if (picked.getHealth() > 0)
+                        if (picked.GetHealth() > 0)
                         {
                             Console.WriteLine("Event 4");
                             Console.WriteLine("You accidentally step on a rat. His friends are not happy. They attack...");
-                            picked = gamePlayEvent2(picked, 10);
+                            picked = GamePlayEvent2(picked, 10);
                         }
                         else
                         {
                             Console.WriteLine($"Game Over ");
                             break;
                         }
-                        if (picked.getHealth() > 0)
+                        if (picked.GetHealth() > 0)
                         {
                             Console.WriteLine("Event 5");
                             Console.WriteLine("You find a huge rock. It comes alive somehow and tries to smash you..");
-                            picked = gamePlayEvent2(picked, 30);
+                            picked = GamePlayEvent2(picked, 30);
                         }
                         else
                         {
                             Console.WriteLine($"Game Over ");
                             break;
                         } 
-                        if(picked.getHealth() > 0)
+                        if(picked.GetHealth() > 0)
                         {
                             Console.BackgroundColor = ConsoleColor.Yellow;
                             Console.ForegroundColor = ConsoleColor.Red;
@@ -302,17 +302,17 @@ namespace TheGame
                     
                     case "1":
                         picked = classSelector();
-                        charName = namePicker();
+                        charName = NamePicker();
                         newChar = new Human(charName, picked);
                         break;
                     case "2":
                          picked = classSelector();
-                        charName = namePicker();
+                        charName = NamePicker();
                         newChar = new Elf(charName, picked);
                         break;
                     case "3":
                         picked = classSelector();
-                        charName = namePicker();
+                        charName = NamePicker();
                         newChar = new Dwarf(charName, picked);
                         break;
                     default:
@@ -349,7 +349,7 @@ namespace TheGame
             }
             
         }
-        static string namePicker()
+        static string NamePicker()
         {
             Console.WriteLine("Choose your character name");
             string name = Console.ReadLine();
@@ -357,7 +357,7 @@ namespace TheGame
         }
 
 
-        static Character pickCharacter(User user)
+        static Character PickCharacter(User user)
         {
             int selected = -1;
             while (true)
@@ -381,7 +381,7 @@ namespace TheGame
        
         }
 
-        static bool actionPlay()
+        static bool ActionPlay()
         {
             while (true)
             {
@@ -399,29 +399,29 @@ namespace TheGame
                 }
             }
         }
-        static int randomRoll()
+        static int RandomRoll()
         {
             Random rnd = new Random();
             int num =rnd.Next(11);
             return num;
         }
 
-        static void showHP(Character chara , int opponentHp)
+        static void ShowHP(Character chara , int opponentHp)
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"{chara.CharName}: {chara.getHealth()}HP \n Enemy: {opponentHp}HP");
+            Console.WriteLine($"{chara.CharName}: {chara.GetHealth()}HP \n Enemy: {opponentHp}HP");
             Console.ForegroundColor = ConsoleColor.White;
 
         }
 
-        static Character gamePlayEvent2(Character chara ,int enemyDamage)
+        static Character GamePlayEvent2(Character chara ,int enemyDamage)
            {
             int enemyHP = 100;
            
             while (true)
             {
-                bool fight = actionPlay();
-                int roll = randomRoll();
+                bool fight = ActionPlay();
+                int roll = RandomRoll();
                 switch (fight)
                 {
                     case true:
@@ -430,52 +430,52 @@ namespace TheGame
                             Console.WriteLine("U landed a critical strike and killed you opponent");
 
                             enemyHP = 0;
-                            showHP(chara, enemyHP);
+                            ShowHP(chara, enemyHP);
                         }
-                        else if (roll > chara.getStrenght())
+                        else if (roll > chara.GetStrenght())
                         {
                             Console.WriteLine($"You rolled {roll} and recieved {enemyDamage} Damage ");
-                            chara.setHealth(-enemyDamage);
-                            showHP(chara, enemyHP);
+                            chara.SetHealth(-enemyDamage);
+                            ShowHP(chara, enemyHP);
                         }
                        
                         else
                         {
-                            Console.WriteLine($"You rolled {roll} and struck the bandit for {20 * (chara.getStrenght() - roll)}");
-                            enemyHP -= (20 * (chara.getStrenght() - roll));
-                            showHP(chara, enemyHP);
+                            Console.WriteLine($"You rolled {roll} and struck the bandit for {20 * (chara.GetStrenght() - roll)}");
+                            enemyHP -= (20 * (chara.GetStrenght() - roll));
+                            ShowHP(chara, enemyHP);
                         }
                         break;
                     case false:
                           if (roll == 0)
                         {
                             Console.WriteLine($"You have run away and run in to a healer and gained 100HP");
-                            chara.setHealth(100);
-                            showHP(chara, enemyHP);
+                            chara.SetHealth(100);
+                            ShowHP(chara, enemyHP);
                         }
-                        else if (roll > chara.getAgility())
+                        else if (roll > chara.GetAgility())
                         {
                             Console.WriteLine("You failed to get away and recieved 10 Damage");
-                            chara.setHealth(-10);
-                            showHP(chara, enemyHP);
+                            chara.SetHealth(-10);
+                            ShowHP(chara, enemyHP);
                         }
                        
                         else
                         {
                             Console.WriteLine($"You have run away and healed for 40hp");
-                            chara.setHealth(40);
-                            showHP(chara, enemyHP);
+                            chara.SetHealth(40);
+                            ShowHP(chara, enemyHP);
                         }
                         break;
                 }
-                if (chara.getHealth() < 1)
+                if (chara.GetHealth() < 1)
                 {
                     Console.WriteLine("You lose");
                     return chara;
                 }
                 else if (enemyHP < 1)
                 {
-                    Console.WriteLine($"You won and have {chara.getHealth()} HP left");
+                    Console.WriteLine($"You won and have {chara.GetHealth()} HP left");
                     return chara;
                 }
             }

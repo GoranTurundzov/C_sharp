@@ -33,17 +33,17 @@ namespace Models
             return phrase.ToLower();
         }
 
-        public string getEmail()
+        public string GetEmail()
         {
             string email = $"{Email}";
             return email.ToLower();
         }
-        public string getPassword()
+        public string GetPassword()
         {
             return Password;
         }
        
-        public string getInfo()
+        public string GetInfo()
         {
             return $"{Username} {Email} {Password} ";
         }
@@ -54,7 +54,7 @@ namespace Models
            
            
         }
-        public void listCharacters()
+        public void ListCharacters()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
             for(int i = 0; i < Characters.Length; i++)

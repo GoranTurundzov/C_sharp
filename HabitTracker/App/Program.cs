@@ -28,44 +28,47 @@ namespace App
 
             List<User> users = new List<User> { goran, bob };
             while (true)
-              
+             
             {
-                
-                Console.WriteLine($" 1.Log In \n 2.Create Account \n 3.Exit");
-                switch (Console.ReadLine())
+                try
                 {
-                    case "1":
-                       User user = LogIn(users);
-                        if(user == null)
-                        {
-                            Console.WriteLine("User does not exist");
+                    Console.WriteLine($" 1.Log In \n 2.Create Account \n 3.Exit");
+                    switch (Console.ReadLine())
+                    {
+                        case "1":
+                            User user = LogIn(users);
+                            UserUI(user);
                             continue;
-                        }
-                        UserUI(user);
-                        continue;
-                    case "2":
-                        Console.WriteLine("REGISTER");
-                        User newUser = CreateAccount(users);
-                        users.Add(newUser);
-                       
-                        continue;
-                    case "3":
-                        Exiting("EXITING APPLICATION... \n GOODBYE!");
-                        break;
-                    case "admin":
-                        foreach (User registeredUser in users)
-                        {
-                            Console.WriteLine(registeredUser.GetInfo());
-                        }
-                        Console.WriteLine(" \n \n \n Press any key to continue");
-                        Console.ReadKey();
-                        Console.Clear();
-                        continue;
-                    default:
-                        continue;
+                        case "2":
+                            Console.WriteLine("REGISTER");
+                            User newUser = CreateAccount(users);
+                            users.Add(newUser);
+
+                            continue;
+                        case "3":
+                            Exiting("EXITING APPLICATION... \n GOODBYE!");
+                            break;
+                        case "admin":
+                            foreach (User registeredUser in users)
+                            {
+                                Console.WriteLine(registeredUser.GetInfo());
+                            }
+                            Console.WriteLine(" \n \n \n Press any key to continue");
+                            Console.ReadKey();
+                            Console.Clear();
+                            continue;
+                        default:
+                            continue;
+                    }
+                    break;
                 }
-                break;
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"{ex.Message}");
+                }
             }
+           
+               
 
         }
         #region AccountCreation
@@ -138,30 +141,7 @@ namespace App
         #endregion
 
         #region Validations
-        static int checkUser(List<User> users)
-        {
-            while (true)
-            {
-
-
-                Console.WriteLine("Enter Username;");
-                string username = Console.ReadLine();
-                Console.WriteLine("Enter Password");
-                string password = Console.ReadLine();
-
-                for (int i = 0; i < users.Count; i++)
-                {
-                    if (users[i].Username == username.ToLower() && users[i].Password == password)
-                    {
-                        return i;
-                    }
-
-                }
-                return -1;
-            }
-
        
-        }
         static bool IsValidEmail(string email)
         {
             try
@@ -195,7 +175,7 @@ namespace App
                 {
                     return password;
                 }
-                Console.WriteLine("Password Must be at least 6 characters long and contain at least 1 number");
+               throw new Exception("Password Must be at least 6 characters long and contain at least 1 number");
                
 
 
@@ -217,7 +197,8 @@ namespace App
                 }
                 else
                 {
-                    Console.WriteLine("Passwords did not match");
+                  Console.WriteLine("Passwords did not match");
+                   
                 }
             }
 
@@ -278,13 +259,11 @@ namespace App
                 string username = Console.ReadLine();
                 Console.WriteLine("Enter Password");
                 string password = Console.ReadLine();
-                User user = users.Where(x => x.Username.ToLower() == username.ToLower()  && x.Password == password).FirstOrDefault();
-                if(user == null)
+                User user = users.FirstOrDefault(x => x.LogIn(username, password) != null);
+                if (user == null)
                 {
                     Console.Clear();
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Wrong Username/Password");
-                    Console.ForegroundColor = ConsoleColor.White;
+                    throw new Exception("Username/Password incorrect");
                 }
 
                 return user;
@@ -438,17 +417,18 @@ namespace App
                 Console.ForegroundColor = ConsoleColor.White;
                 return;
             }
-                                      
+            int i = -1;
                 while (true)
                 {
 
                 Console.WriteLine("Choose a habbit to Log");
                 Console.WriteLine(user.ListHabits());
-                if (!int.TryParse(Console.ReadLine(), out int i))
+                if (!int.TryParse(Console.ReadLine(), out  i) || i < 1 || i > user.Habits.Count)
                 {
                     Console.WriteLine("Invalid input");
                     continue;
                 }
+                
                 int minutes = 0;
                 Console.WriteLine($"How many minutes did you spend on {user.Habits[i - 1].HabitName}?");
                     if(int.TryParse(Console.ReadLine(), out minutes))
@@ -492,6 +472,7 @@ namespace App
                 Console.Write(c);
                 Thread.Sleep(50);
             }
+            Console.WriteLine();
         }
 
 

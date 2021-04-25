@@ -66,6 +66,26 @@ namespace Models
 
             return stats;
         }
-        
+        public bool ValidPassword(string password)
+        {
+           
+            return password == Password;
+        }
+
+        public User LogIn(string username, string password)
+        {
+            if (Username.ToLower() != username.ToLower()) return null;
+
+
+            if (Password != password)
+            {
+             
+                throw new Exception("Wrong Password");
+            }
+         
+            return this;
+
+        }
+
     }
 }

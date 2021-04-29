@@ -6,28 +6,30 @@ namespace Models
     public class User : Person
     {
 
-       
+
 
         public string FullName => $"{FirstName} {LastName}";
 
         private long Phone { get; set; }
 
         public int Balance { get; set; } = 1000;
-        public List<Invoice> Invoices { get; set; } = new List<Invoice>();
-        public User (string firstName , string lastName ,long phone, string username , string password): base (firstName , lastName , username , password , false)
+        public List<Invoice> Invoices { get; set; }
+        public User(string firstName, string lastName, long phone, string username, string password) : base(firstName, lastName, username, password, false)
         {
             Phone = phone;
+            Invoices = new List<Invoice>();
         }
-       
-       
+
+
 
         public string GetInvoices()
         {
-            string invoice = $"Invoices: \n  {"No."}. {"Company" , 10} | {"Bill" , 10} | {"Date Issued" , 10} | {"Due Date"}"  ;
+            string invoice = $"Invoices: \n  {"No."}. {"Company",10} | {"Bill",10} | {"Date Issued",10} | {"Due Date"} | Payed \n";
 
-            for(int i = 0; i < Invoices.Count; i++)
+            for (int i = 0; i < Invoices.Count; i++)
             {
-                invoice += $"{i + 1}. {Invoices[i].Company,10} | {Invoices[i].Bill,10} | {Invoices[i].DateIssued} | {Invoices[i].DueDate} \n  \n";
+                string info = Invoices[i].Payed ? "Payed" : "Unpayed";
+                invoice += $"{i + 1}. {Invoices[i].Company,10} | {Invoices[i].Bill,10} | {Invoices[i].DateIssued.ToString("dd. MM. yyyy")} | {Invoices[i].DueDate.ToString("dd. MM.yyyy")} | {info} \n  \n";
             }
 
             return invoice;
@@ -35,19 +37,55 @@ namespace Models
 
         public string GetUnpayedInvoices()
         {
-            string invoice = $"Unpayed Invoices: \n  {"No."}. {"Company",10} | {"Bill",10} | {"Date Issued",10} | {"Due Date"}";
-            int i = 1;
-            foreach(Invoice unpayed in Invoices)
+            List<Invoice> unpayedInvoices = Helper.ClearPayed(Invoices);
+            string invoice = $"Unpayed Invoices: \n{"No." , 4}. {"Company",10} | {"Bill",10} | {"Date Issued",10} | {"Due Date" , 10} | \n";
+            int i = 0;
+
+            foreach (Invoice unpayed in unpayedInvoices)
             {
-                if (!unpayed.Payed)
-                {
-                    invoice += $"{i}. {unpayed.Company,10} | {unpayed.Bill,10} | {unpayed.DateIssued} | {unpayed.DueDate} \n  \n";
-                    i++;
-                }
-                
+                invoice += $"{i + 1 , 4}. {unpayed.Company,10} | {unpayed.Bill,10} | {unpayed.DateIssued.ToString("dd. MM. yyyy")} | {unpayed.DueDate.ToString("dd. MM. yyyy")}  \n  \n";
+                i++;
+
             }
 
             return invoice;
+        }
+
+        public Invoice PayInvoice()
+        {
+            List<Invoice> tbp = Helper.ClearPayed(Invoices);
+            while (true)
+            {
+                int num = -5;
+                Console.WriteLine("Select an invoice to pay                                            Press X to exit");
+                string selected = Console.ReadLine();
+                if (int.TryParse(selected, out num) && num > 0 && num <= tbp.Count)
+                {
+                    if (PayInvoice(tbp[num - 1]))
+                    {
+                        tbp[num - 1].Payed = true;
+                        Console.WriteLine($"Succesfully payed {tbp[num - 1].Descriiption}");
+                        Balance -= (int)tbp[num - 1].Bill;
+                        return tbp[num - 1];
+                    }
+                    else
+                    {
+
+                        throw new Exception("Insufficient Funds");
+                    }
+
+                } else if (selected.ToLower() == "x")
+                {
+                    throw new Exception("Exiting");
+                }
+                else
+                {
+                    Console.WriteLine("Invalid Selection");
+                }
+
+
+            }
+
         }
 
         public void AddFunds(int num)
@@ -55,12 +93,20 @@ namespace Models
             Balance += num;
         }
 
-        public bool PayInvoice(int index)
+        public bool PayInvoice(Invoice invoice)
         {
 
-            if (Invoices[index].FullBill() <= Balance) return true;
+            if (invoice.Intrest() <= Balance) return true;
             else return false;
+
+
+
         }
 
+        public string GetInfo()
+        {
+            return $"{FullName} : {Balance}";
+        }
+        
     }
 }

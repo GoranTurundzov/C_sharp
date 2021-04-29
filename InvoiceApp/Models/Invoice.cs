@@ -28,26 +28,37 @@ namespace Models
             DueDate = dueDate;
             Bill = bill;
         }
+        public Invoice(string description, EnumCompany company, DateTime issued, DateTime dueDate, double bill , bool payed)
+        {
+            Descriiption = description;
+            Company = company;
+            DateIssued = issued;
+            DueDate = dueDate;
+            Bill = bill;
+            Payed = payed;
+        }
 
-
-        public void Intrest()
+        public double Intrest()
         { 
                 int days = 0;
                 DateTime start = DueDate;
+            if(start < DateTime.Now)
+            {
                 while (start < DateTime.Now)
                 {
                     days++;
                     start = start.AddDays(1);
                 }
-            Bill += (days / 30) * 10;
-
-        }
-
-
-        public double FullBill()
-        {
-            Intrest();
+                double full = Bill + (days / 30) * 10;
+                Console.WriteLine($"You are {days} days late on payment. Intrest of {(days / 30) * 10} added. New BIll is {Bill}");
+                return full;
+            }
             return Bill;
+
+           
         }
+
+
+        
     }
 }

@@ -8,12 +8,18 @@ namespace Models
 {
     public static class DataBase
     {
-        public static List<Person> Users { get; set; } = new List<Person>();
+        public static List<Person> Users { get; set; }
 
 
         static DataBase()
         {
-
+            Users = new List<Person>
+            {
+                new Admin("BEG",  "BEG", "test123", EnumCompany.BEG),
+                 new Admin("EVN", "EVN", "test123", EnumCompany.EVN),
+                 new Admin("VODOVOD", "vodovod", "test123", EnumCompany.Vodovod),
+                 new Admin("Komunalec", "gorann", "test123", EnumCompany.BEG)
+        };
         }
 
         public static Person LogIn(string username , string password)
@@ -22,6 +28,8 @@ namespace Models
             if (user == null) throw new Exception("Invalid Username/Password");
             return user;
         }
+
+        
         
     }
 }

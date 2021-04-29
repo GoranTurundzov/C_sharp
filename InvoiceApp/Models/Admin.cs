@@ -15,19 +15,27 @@ namespace Models
         }
 
 
-        public string GetInvoicesByMyCompany(List<Person> list)
+        public string GetInvoicesByMyCompany( )
         {
-            string invoices = $"Invoices by {Company} : \n \n";
+            string invoices = $"Invoices issued by {Company}  \n{ "Issued To",25} | { "Date Issued",8} | { "Due Date",8} | { "Bill",6} | Payed  \n ";
 
-            foreach(User user in list)
+            foreach (User user in DataBase.Users.Where(x => !x.Admin).ToList())
             {
-                foreach(Invoice invoice in user.Invoices)
-                {
-                    invoices += invoice.Company == Company ? $"{user.FullName} {invoice.Bill} {invoice.DueDate} \n" : string.Empty;
-                }
+                  
+                    foreach (Invoice invoice in user.Invoices)
+                    {
+                    string payed = invoice.Payed ? "Payed" : "NOT-PAYED";
+                        invoices += invoice.Company == Company ? $"{ user.FullName,25} | { invoice.DateIssued.ToString("dd, MM , yyyy"),8} | { invoice.DueDate.ToString("dd, MM , yyyy"),8} | { invoice.Bill,6} | {payed} \n " : string.Empty;
+                    }
+                
             }
 
             return invoices;
+        }
+
+        public string GetInfo()
+        {
+            return $"{FirstName} {Company} ";
         }
     }
 }

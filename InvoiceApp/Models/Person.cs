@@ -8,7 +8,7 @@ namespace Models
 {
     public abstract class Person
     {
-        private string Username { get; set; }
+       private string Username { get; set; }
 
         private string Password { get; set; }
 
@@ -24,6 +24,7 @@ namespace Models
             LastName = lastName;
             Username = username;
             Password = password;
+            Admin = type;
         }
         public bool CheckPassword(string password)
         {
@@ -39,5 +40,6 @@ namespace Models
             return this;
 
         }
+       
     }
 }

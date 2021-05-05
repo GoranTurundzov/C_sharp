@@ -13,13 +13,15 @@ namespace Models
 
         public List<Habit> Habits { get; set; }
 
+        private string Pin { get; set; }
         
-        public User(string username , string password , string email)
+        public User(string username , string password , string email , string pin)
         {
             Username = username;
             Password = password;
             Email = email;
             Habits = new List<Habit>();
+            Pin = pin;
         }
 
         public void AddHabit(Habit habit)
@@ -85,6 +87,11 @@ namespace Models
          
             return this;
 
+        }
+
+        public bool CheckPin(string pin)
+        {
+            return pin == Pin;
         }
 
     }

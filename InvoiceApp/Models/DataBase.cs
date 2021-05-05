@@ -15,10 +15,11 @@ namespace Models
         {
             Users = new List<Person>
             {
-                new Admin("BEG",  "BEG", "test123", EnumCompany.BEG),
-                 new Admin("EVN", "EVN", "test123", EnumCompany.EVN),
-                 new Admin("VODOVOD", "vodovod", "test123", EnumCompany.Vodovod),
-                 new Admin("Komunalec", "gorann", "test123", EnumCompany.BEG)
+                new Admin("BEG",  "BEG", "test123", EnumCompany.BEG , "1234"),
+                 new Admin("EVN", "EVN", "test123", EnumCompany.EVN , "1234"),
+                 new Admin("VODOVOD", "vodovod", "test123", EnumCompany.Vodovod , "1234"),
+
+                 new Admin("Komunalec", "gorann", "test123", EnumCompany.BEG , "123")
         };
         }
 

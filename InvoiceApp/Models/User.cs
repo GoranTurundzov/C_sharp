@@ -12,10 +12,15 @@ namespace Models
 
         private long Phone { get; set; }
 
+
+        
+
         public int Balance { get; set; } = 1000;
         public List<Invoice> Invoices { get; set; }
-        public User(string firstName, string lastName, long phone, string username, string password) : base(firstName, lastName, username, password, false)
+        public User(string firstName, string lastName, long phone, string username, string password , string pin) : base(firstName, lastName, username, password, false , pin)
         {
+           
+            
             Phone = phone;
             Invoices = new List<Invoice>();
         }
@@ -51,8 +56,9 @@ namespace Models
             return invoice;
         }
 
-        public Invoice PayInvoice()
+        public bool PayInvoice()
         {
+           
             List<Invoice> tbp = Helper.ClearPayed(Invoices);
             while (true)
             {
@@ -66,12 +72,12 @@ namespace Models
                         tbp[num - 1].Payed = true;
                         Console.WriteLine($"Succesfully payed {tbp[num - 1].Descriiption}");
                         Balance -= (int)tbp[num - 1].Bill;
-                        return tbp[num - 1];
+                        return true;
                     }
                     else
                     {
 
-                        throw new Exception("Insufficient Funds");
+                        Console.WriteLine("Insufficient Funds");
                     }
 
                 } else if (selected.ToLower() == "x")
@@ -107,6 +113,8 @@ namespace Models
         {
             return $"{FullName} : {Balance}";
         }
+
+       
         
     }
 }

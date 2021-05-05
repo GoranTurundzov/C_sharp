@@ -11,16 +11,16 @@ namespace App
         static void Main(string[] args)
         {
 
-         
+
 
 
             #region testUsers
-            User goran = new User("Goran", "Password", "Goran@goran.com");
+            User goran = new User("Goran", "Password", "Goran@goran.com", "pinn");
             Habit smoking = new BadHabit("smoking", Group.Other, Difficulty.Medium);
             Habit swimming = new GoodHabit("swimming", Group.Exercise_and_Sport, Difficulty.Hard);
             goran.AddHabit(smoking);
             goran.AddHabit(swimming);
-            User bob = new User("bob", "bob123", "Bob@bob.bob");
+            User bob = new User("bob", "bob123", "Bob@bob.bob" , "1234");
             bob.AddHabit(smoking);
             bob.AddHabit(swimming);
 
@@ -79,8 +79,8 @@ namespace App
             string username = setUsernameNewUser(users);
             string email = setEmailNewUser(users);
             string password = ConfirmPassword();
-
-            User user = new User(username, password, email);
+            string pin = ConfirmPin();
+            User user = new User(username, password, email , pin );
             
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine($"Account {username} created");
@@ -203,6 +203,25 @@ namespace App
             }
 
         }
+        static string ConfirmPin()
+        {
+            while (true)
+            {
+
+                string pass1 = PasswordValidation();
+                Console.WriteLine("Confirm password");
+                string pass2 = Console.ReadLine();
+                if (pass1 == pass2)
+                {
+                    return pass1;
+                }
+                else
+                {
+                    Console.WriteLine("Pins did not match");
+
+                }
+            }
+        }
 
 
         #endregion
@@ -219,7 +238,15 @@ namespace App
                     case "1":
                         Console.Clear();
                         Console.WriteLine("Add a new habit");
-                        AddNewHabit(user);
+                        if (user.CheckPin(Console.ReadLine()))
+                        {
+                            AddNewHabit(user);
+                        }else
+                        {
+                            throw new Exception("Incorrect Pin");
+                        }
+                    
+                        
                         continue;
                     case "2":
                         Console.Clear();

@@ -9,7 +9,7 @@ namespace Models
     public class Admin : Person
     {
         public EnumCompany Company { get; set; }
-        public Admin(string from,  string username, string password , EnumCompany company): base (from, string.Empty, username, password , true)
+        public Admin(string from,  string username, string password , EnumCompany company , string pin): base (from, string.Empty, username, password , true , pin)
         {
             Company = company;
         }

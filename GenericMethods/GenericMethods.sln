@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31112.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericMethods", "GenericMethods\GenericMethods.csproj", "{8937E7FF-876D-4C6C-9B4D-255040877861}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{50D0BB8D-51F7-4AA9-8996-CAFC5C959F72}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8937E7FF-876D-4C6C-9B4D-255040877861}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8937E7FF-876D-4C6C-9B4D-255040877861}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8937E7FF-876D-4C6C-9B4D-255040877861}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8937E7FF-876D-4C6C-9B4D-255040877861}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50D0BB8D-51F7-4AA9-8996-CAFC5C959F72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50D0BB8D-51F7-4AA9-8996-CAFC5C959F72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50D0BB8D-51F7-4AA9-8996-CAFC5C959F72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50D0BB8D-51F7-4AA9-8996-CAFC5C959F72}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {58E08DD1-09C2-40AF-9B54-84AC46F0E14A}
+	EndGlobalSection
+EndGlobal

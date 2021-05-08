@@ -35,10 +35,15 @@ namespace Models
 
         public void BuyPet(string name)
         {
-            T pet = list.FirstOrDefault(x => name == x.MyName());
-            list.Remove(pet);
-            Console.WriteLine($"The {pet.GetType().Name} {name} is now yours. Take good care of it");
-            Console.WriteLine($"Come back to the {typeof(T).Name} Store");
+            T pet = list.FirstOrDefault(x => name == x.Name);
+            if (pet == null) Console.WriteLine("There is no pet with that name");
+            else
+            {
+                list.Remove(pet);
+                Console.WriteLine($"The {pet.GetType().Name} {name} is now yours. Take good care of it");
+                Console.WriteLine($"Come back to the {typeof(T).Name} Store");
+            }
+            
         }
 
         

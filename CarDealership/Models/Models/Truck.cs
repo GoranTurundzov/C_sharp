@@ -1,4 +1,5 @@
 ﻿using CarDealership.Domain.Enum;
+using CarDealership.Domain.Interfaces;
 using Models;
 using Models.Enum;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace CarDealership.Domain.Models
 {
-    public class Truck : Vehicle
+    public class Truck : Vehicle , ITruck
     {
       
 

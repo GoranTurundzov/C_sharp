@@ -1,4 +1,5 @@
 ﻿using CarDealership.Domain.Enum;
+using CarDealership.Domain.Interfaces;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CarDealership.Domain.Models
 {
-    public abstract class User : BaseEntity
+    public abstract class User : BaseEntity , IUser
     {
         public string FirstName { get; set; }
 

@@ -403,6 +403,7 @@ namespace CarDealership.Domain.Helpers
         public static void SetCarPrice(Supplyer user , Vehicle car)
         {
             int price = 0;
+            Console.WriteLine("New Price?");
             while(!int.TryParse(Console.ReadLine() , out price))
             {
                 Console.WriteLine("Invalid input (enter the price in number format)");

@@ -19,5 +19,7 @@ namespace Models.Interfaces
 
         VehicleType Type { get; set; }
 
+       
+
     }
 }

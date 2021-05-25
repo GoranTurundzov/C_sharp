@@ -1,4 +1,5 @@
 ﻿using CarDealership.Domain.Enum;
+using CarDealership.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CarDealership.Domain.Models
 {
-    public class Costumer : User
+    public class Costumer : User , ICostumer
     {
         public int Balance { get; set; }
        

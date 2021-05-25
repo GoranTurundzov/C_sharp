@@ -1,4 +1,5 @@
 ﻿using CarDealership.Domain.Enum;
+using CarDealership.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace CarDealership.Domain.Models
 {
-    public class Manager : User
+    public class Manager : User , IManager
+
     {
 
         public int YearsExperience { get; set; }

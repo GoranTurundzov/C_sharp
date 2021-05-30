@@ -46,9 +46,9 @@ namespace CarDealership.Domain.Helpers
         {
            
             string users = JsonConvert.SerializeObject(ShopDB.Users);
-            WriteContent(users, "users.json");
+            WriteContent(users, @"..\..\..\users.json");
             string vehicles = JsonConvert.SerializeObject(ShopDB.Vehicles);
-            WriteContent(vehicles, "vehicles.json");
+            WriteContent(vehicles, @"..\..\..\vehicles.json");
         }
         public static void FillDataBase()
         {
@@ -57,7 +57,7 @@ namespace CarDealership.Domain.Helpers
             var settings = new JsonSerializerSettings();
             settings.TypeNameHandling = TypeNameHandling.Objects;
 
-            string vehicles = ReadContent("vehicles.json");
+            string vehicles = ReadContent(@"..\..\..\vehicles.json");
             List<Vehicle> output = JsonConvert.DeserializeObject<List<Vehicle>>(vehicles, settings);
             ShopDB.Vehicles.AddRange(output);
            // string users = ReadContent("users.json");

@@ -14,6 +14,10 @@ namespace CarDealership.Domain.Models
 
         public int Salary { get; set; }
 
+        public Supplyer()
+        {
+            Type = UserType.Supplyer;
+        }
         public Supplyer(string firstName, string lastName, int age, string email, string username, string password) : base(firstName, lastName, age, username, password, email, UserType.Supplyer)
         {
             Salary = 1000;

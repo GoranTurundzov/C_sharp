@@ -81,7 +81,9 @@ namespace CarDealership.Domain.Helpers
             {
                 throw new Exception("Username/Password incorrect");
             }
+           
             return user;
+           
         }
 
         public static void ManagerPannel(Manager user)
@@ -192,10 +194,16 @@ namespace CarDealership.Domain.Helpers
                         Console.Clear();
                         ShopDB.ShowCarsForBuyer();
                         Console.WriteLine("Select A car to Buy");
+
                         if(!int.TryParse(Console.ReadLine() , out selected) || selected > ShopDB.Vehicles.Count)
                         {
+                           
                             Console.WriteLine("Car does not exist");
                             continue;
+                        }
+                        if (selected == 0)
+                        {
+                            Console.WriteLine("Come Back again"); continue;
                         }
                         BuyCar(user, ShopDB.Vehicles[selected - 1]);
                         
@@ -268,6 +276,7 @@ namespace CarDealership.Domain.Helpers
                         Console.WriteLine("Invalid input");
                         continue;
                 }
+                break;
             }
         }
         public static void GuestPannel()
@@ -353,6 +362,7 @@ namespace CarDealership.Domain.Helpers
         {
             while (true)
             {
+                Console.WriteLine("Pick an action");
                 Console.WriteLine("1. Raise");
                 int sum = 0;
                 Console.WriteLine("2. Lower");
@@ -569,6 +579,7 @@ namespace CarDealership.Domain.Helpers
 
         public static void BuyCar(Costumer user , Vehicle car)
         {
+            
             if(user.Balance < car.Price)
             {
                 Console.WriteLine($"Insufficient funds");

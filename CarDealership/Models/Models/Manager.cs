@@ -11,6 +11,10 @@ namespace CarDealership.Domain.Models
     public class Manager : User , IManager
 
     {
+        public Manager()
+        {
+            Type = UserType.Manager;
+        }
 
         public int YearsExperience { get; set; }
        public Manager (string firstName, string lastName, int age, string email, string username, string password , int yearsExp) : base(firstName, lastName, age, username, password, email, UserType.Manager)
@@ -19,6 +23,7 @@ namespace CarDealership.Domain.Models
             }
 
 
+      
 
             public override string GetInfo()
         {

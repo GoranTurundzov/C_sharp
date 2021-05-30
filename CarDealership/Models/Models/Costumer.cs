@@ -14,12 +14,18 @@ namespace CarDealership.Domain.Models
         public int Balance { get; set; }
        
         
-
+        public Costumer()
+        {
+           
+           
+            Type = UserType.Buyer;
+        }
         public Costumer(string firstName , string lastName , int age ,string email, string username , string password ,int balance ) : base(firstName , lastName , age ,username , password , email, UserType.Buyer)
         {
             Balance = balance;
 
         }
+        
         public override string GetInfo()
         {
             return $"{FirstName} {LastName} : Balance {Balance.ToString("C", new CultureInfo("en-GB"))}";

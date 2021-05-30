@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CarDealership.Domain.Models
 {
-    public abstract class User : BaseEntity , IUser
+    public class User : BaseEntity , IUser
     {
         public string FirstName { get; set; }
 
@@ -19,11 +19,16 @@ namespace CarDealership.Domain.Models
 
         public UserType Type { get; set; }
 
-        private string Password { get; set; }
+        public string Password { get; private set; }
 
         public string Username { get; set; }
 
         public string Email { get; set; }
+
+        public User()
+        {
+
+        }
         public User(string firstName, string lastName, int age, string username, string password, string email, UserType type)
         {
             FirstName = firstName;
@@ -66,6 +71,11 @@ namespace CarDealership.Domain.Models
         public UserType StoreStatus()
         {   
             return Type;
+        }
+
+        public override string GetInfo()
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -49,10 +49,10 @@ namespace CarDealership.Domain.Helpers
                         Console.WriteLine("To see the prices please register and log in");
                         continue;
                     case "3":
-                        User newUser = RegisterPannel();
+                        Costumer newUser = RegisterPannel();
                         if(newUser != null)
                         {
-                            ShopDB.Users.Add(newUser);
+                            ShopDB.Costumers.Add(newUser);
                         }
                         continue;
                     case "0":

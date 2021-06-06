@@ -1,4 +1,5 @@
-﻿using CarDealership.Domain.Models;
+﻿using CarDealership.Domain.Database;
+using CarDealership.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -103,6 +104,14 @@ namespace CarDealership.Domain.Helpers
                 Thread.Sleep(50);
             }
             Console.WriteLine();
+        }
+
+        public static void JoinTables()
+        {
+            ShopDB.Users.AddRange(ShopDB.Managers);
+            ShopDB.Users.AddRange(ShopDB.Supplyers);
+            ShopDB.Users.AddRange(ShopDB.Costumers);
+            ShopDB.Vehicles = ShopDB.Vehicles.Concat(ShopDB.Automobiles).Concat(ShopDB.Vans).Concat(ShopDB.Trucks).ToList();
         }
 
     }

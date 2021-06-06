@@ -14,7 +14,10 @@ namespace CarDealership
         static void Main(string[] args)
         {
 
+            
             CostumLogger.FillDataBase();
+
+            Helper.JoinTables();
 
             try
             {

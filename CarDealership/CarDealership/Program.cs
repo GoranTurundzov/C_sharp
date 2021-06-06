@@ -14,7 +14,7 @@ namespace CarDealership
         static void Main(string[] args)
         {
 
-            
+          
             CostumLogger.FillDataBase();
 
             Helper.JoinData();
@@ -23,6 +23,7 @@ namespace CarDealership
             {
                 UserUI.HomeScreen();
                 CostumLogger.LogDataBase();
+                CostumLogger.LogToExcelFIle();
             } catch(Exception ex)
             {
                 Console.WriteLine(ex.Message);

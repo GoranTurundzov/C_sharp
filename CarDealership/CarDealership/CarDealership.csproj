@@ -6,10 +6,42 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="automobiles.json" />
+    <None Remove="costumers.json" />
+    <None Remove="data.xlsx" />
+    <None Remove="managers.json" />
+    <None Remove="supplyers.json" />
+    <None Remove="trucks.json" />
     <None Remove="users.json" />
+    <None Remove="vans.json" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="automobiles.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="costumers.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="managers.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="supplyers.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="trucks.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="vans.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.95.4" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
@@ -21,27 +53,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Models\CarDealership.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="automobiles.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="costumers.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="managers.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="supplyers.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="trucks.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="vans.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
 </Project>

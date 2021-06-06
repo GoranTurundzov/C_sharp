@@ -86,11 +86,20 @@ namespace CarDealership.Domain.Database
             print += string.Join("-", Vehicles);
             return print;
         }
+        public static string ShowForGuest()
+        {
+            string print = "Vehicles: \n";
+            foreach(Vehicle vehicle in Vehicles)
+            {
+                print += vehicle.RestrictedView();
+            }
+            return print;
+        }
         public static string GetCarsForSupplyer()
         {
             string cars = "";
             List<Vehicle> auto = new List<Vehicle>();
-            auto.Concat(Automobiles).Concat(Trucks).Concat(Trucks).ToList();
+            auto = auto.Concat(Automobiles).Concat(Trucks).Concat(Trucks).ToList();
             foreach (Vehicle car in auto)
             {
                 cars += $"{car.GetInfo()} \n";
@@ -101,12 +110,12 @@ namespace CarDealership.Domain.Database
         public static string ShowAllEmployees()
         {
             string print = "Employees: \n";
-            List<User> empoyees = new List<User>();
-            empoyees.Concat(Managers).Concat(Supplyers).ToList();
+            List<User> employees = new List<User>();
+            employees = employees.Concat(Managers).Concat(Supplyers).ToList();
           
-           for(int i = 0; i < empoyees.Count; i++)
+           for(int i = 0; i < employees.Count; i++)
             {
-                print += $"{empoyees[i].Id}. {empoyees[i].GetInfo()} \n";
+                print += $"{employees[i].Id}. {employees[i].GetInfo()} \n";
             } 
            return print;
         }

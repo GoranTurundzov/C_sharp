@@ -19,6 +19,7 @@ namespace CarDealership.Domain.Helpers
           
             while (true)
             {
+                Console.Clear();
                 Console.WriteLine("Select: \n \t 1.Log In. \n \t 2.Continue as Guest \n \t 3.Register \n \t 0.Exit");
                 switch (Console.ReadLine())
                 {
@@ -26,9 +27,10 @@ namespace CarDealership.Domain.Helpers
                     case "1":
                         try {
                         Helper.SlowPrint("Loging in");
-                        Console.Clear();
+                      
                         User user = LogInUi(ShopDB.Users);
-                        Console.WriteLine($"Hello {user.FirstName}");
+                            Console.Clear();
+                            Console.WriteLine($"Hello {user.FirstName}");
                             if(user.Type == UserType.Buyer)
                             {
                                 CostumerPannel((Costumer) user);
@@ -47,6 +49,7 @@ namespace CarDealership.Domain.Helpers
                         Console.Clear();
                         GuestPannel();
                         Console.WriteLine("To see the prices please register and log in");
+                        Console.ReadKey();
                         continue;
                     case "3":
                         Costumer newUser = RegisterPannel();
@@ -186,7 +189,7 @@ namespace CarDealership.Domain.Helpers
             while (true)
             {
                 Console.WriteLine($"{user.GetInfo()}");
-                Console.WriteLine("Select: \n 1. Buy \n 2. Browse \n 9. Change Password \n 0. Log Out");
+                Console.WriteLine("Select: \n 1. Buy \n 2. Browse \n 3. Add Funds \n 9. Change Password \n 0. Log Out");
 
                 switch (Console.ReadLine())
                 {
@@ -213,9 +216,12 @@ namespace CarDealership.Domain.Helpers
                         Console.ReadKey();
                         Console.Clear();
                         continue;
+                    case "3":
+                        Helper.AddFunds(user);
+                        continue;
                     case "9":
                         Console.WriteLine("ChangePassword");
-                        Console.WriteLine("Confirm password");
+                        Console.WriteLine("Enter old password");
                         if (user.CheckPassword(Console.ReadLine()))
                         {
                             Console.WriteLine("Enter new password");
@@ -223,6 +229,14 @@ namespace CarDealership.Domain.Helpers
                             user.ChangePassword(password);
                             Console.WriteLine("Password Succesfully changed");
                         }
+                        else
+                        {
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("Incorrect Password");
+                            Console.ForegroundColor = ConsoleColor.White;
+                        }
+                        
                         continue;
                     case "0":
                         Helper.SlowPrint("Loging out...");
@@ -281,7 +295,7 @@ namespace CarDealership.Domain.Helpers
         }
         public static void GuestPannel()
         {
-            Console.WriteLine(ShopDB.ShowAllVehicles());
+            Console.WriteLine(ShopDB.ShowForGuest());
         }
 
         public static Costumer RegisterPannel()
@@ -334,6 +348,7 @@ namespace CarDealership.Domain.Helpers
                 switch (Console.ReadLine())
                 {
                     case "1":
+                        Console.WriteLine("Enter Sum");
                         if(int.TryParse(Console.ReadLine() , out funds))
                         {
                             Console.WriteLine($"Succesfully added {funds} to your account");
@@ -564,15 +579,15 @@ namespace CarDealership.Domain.Helpers
             }
             if(type == VehicleType.Automobile)
             {
-                ShopDB.Vehicles.Add(new Automobile(manufacturer, model, year, cc, hp, fuel, colorType, color, kilometters, feature));
+                ShopDB.Automobiles.Add(new Automobile(manufacturer, model, year, cc, hp, fuel, colorType, color, kilometters, feature));
             } else if(type == VehicleType.Van)
             {
-                ShopDB.Vehicles.Add(new Van(manufacturer, model, year, cc, hp, fuel, colorType, color, kilometters, feature));
+                ShopDB.Vans.Add(new Van(manufacturer, model, year, cc, hp, fuel, colorType, color, kilometters, feature));
             } else if(type == VehicleType.Truck)
             {
-                ShopDB.Vehicles.Add(new Truck(manufacturer, model, year, cc, hp, fuel, colorType, color, kilometters, feature));
+                ShopDB.Trucks.Add(new Truck(manufacturer, model, year, cc, hp, fuel, colorType, color, kilometters, feature));
             }
-
+            Helper.JoinVehicles();
             Console.WriteLine($"New {type} ({manufacturer} : {model}) added to the salon roster");
 
         }

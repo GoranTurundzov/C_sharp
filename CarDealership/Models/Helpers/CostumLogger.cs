@@ -74,7 +74,7 @@ namespace CarDealership.Domain.Helpers
             ShopDB.Managers.AddRange(managerOutput);
             string supplyers = ReadContent(@"..\..\..\supplyers.json");
             List<Supplyer> supplyerOutput = JsonConvert.DeserializeObject<List<Supplyer>>(supplyers, settings);
-            ShopDB.Users.AddRange(supplyerOutput);
+            ShopDB.Supplyers.AddRange(supplyerOutput);
         }
     }
 }

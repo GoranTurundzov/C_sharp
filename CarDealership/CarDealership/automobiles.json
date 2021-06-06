@@ -1,1 +1,1 @@
-[{"HasTrailerHook":false,"Name":"Honda","Model":"Civic","HorsePower":150,"CC":2000,"ManufactureYear":2015,"Type":1,"Fuel":1,"Paint":3,"Color":"Black","Price":6315,"KmPassed":70000,"Id":447934}]
+[{"HasTrailerHook":false,"Name":"Honda","Model":"Civic","HorsePower":150,"CC":2000,"ManufactureYear":2015,"Type":1,"Fuel":1,"Paint":3,"Color":"Black","Price":6315,"KmPassed":70000,"Id":447934},{"HasTrailerHook":false,"Name":"Toyota","Model":"Yaris","HorsePower":65,"CC":1100,"ManufactureYear":2021,"Type":1,"Fuel":1,"Paint":1,"Color":"Gray","Price":4351,"KmPassed":0,"Id":511184}]

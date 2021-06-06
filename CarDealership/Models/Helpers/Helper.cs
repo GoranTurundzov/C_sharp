@@ -106,13 +106,37 @@ namespace CarDealership.Domain.Helpers
             Console.WriteLine();
         }
 
-        public static void JoinTables()
+        public static void JoinData()
         {
+            
             ShopDB.Users.AddRange(ShopDB.Managers);
             ShopDB.Users.AddRange(ShopDB.Supplyers);
             ShopDB.Users.AddRange(ShopDB.Costumers);
+            JoinVehicles();
+           
+        }
+
+        public static void JoinVehicles()
+        {
+            ShopDB.Vehicles.Clear();
             ShopDB.Vehicles = ShopDB.Vehicles.Concat(ShopDB.Automobiles).Concat(ShopDB.Vans).Concat(ShopDB.Trucks).ToList();
         }
+
+        public static void AddFunds(Costumer costumer)
+        {
+            Console.WriteLine("How much would you like to add");
+            int sum = 0;
+            if(int.TryParse(Console.ReadLine(), out sum))
+            {
+                costumer.Balance += sum;
+                Console.WriteLine($"{sum} succesfully added to {costumer.FirstName}'s account");
+            }
+            else
+            {
+                Console.WriteLine("Invalid input");
+            }
+        }
+
 
     }
 }

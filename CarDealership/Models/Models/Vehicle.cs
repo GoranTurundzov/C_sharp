@@ -48,14 +48,19 @@ namespace Models
             KmPassed = kmPassed;
             // I will think of some other way to set the price for the vehicles
             Price = type == VehicleType.Automobile ? manufactureYear + ((cc + horsePower) * 2)
-                : type == VehicleType.Van ? manufactureYear + ((cc + horsePower) * 2) + 3000
-                :  manufactureYear + ((cc + horsePower) * 2) + 10000;
+                : type == VehicleType.Van ? manufactureYear + ((cc + horsePower) * 2) + 6000
+                :  manufactureYear + ((cc + horsePower) * 2) + 18000;
 
         }
 
         public override string GetInfo()
         {
             return $"[[{Id}]] -- [{Type} / {Fuel}] {Name} : {Model} ({ManufactureYear}) [PRICE: {Price.ToString("C", new CultureInfo("en-GB"))}] \n {KmPassed} {CC}cc/{HorsePower}HP [{Color}-{Paint}] (Chassis Number{Id})  \n";
+        }
+
+        public string RestrictedView()
+        {
+            return $"[[{Type} / {Fuel}] {Name} : {Model} ({ManufactureYear})  \n Km passed: {KmPassed}KM {CC}cc/{HorsePower}HP [{Color}-{Paint}] \n ------------------------------------------------------------------ \n";
         }
         public override string ToString()
         {

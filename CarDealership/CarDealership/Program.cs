@@ -17,7 +17,7 @@ namespace CarDealership
             
             CostumLogger.FillDataBase();
 
-            Helper.JoinTables();
+            Helper.JoinData();
 
             try
             {

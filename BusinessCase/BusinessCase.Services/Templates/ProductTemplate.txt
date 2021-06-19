@@ -1,0 +1,4 @@
+﻿... {name}
+    Price: ${price}
+    {description}
+    Weight : {weight}

@@ -1,9 +1,0 @@
-﻿.Domestic
-{domesticproducts}
-.Imported
-{importedproducts}
-
-Domestic cost: ${domesticcost}
-Imported cost: ${importedcost}
-Domestic count: {domesticcount}
-Imported count: {importedcount}
